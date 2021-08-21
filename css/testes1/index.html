@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        label {
+            cursor: pointer;        
+        }
+
+        genero {
+            display: block;
+        }
+
+        #nome {
+            width: 40%;
+            padding: 7px 12px;
+            margin: 8px 0 0 0;
+            box-sizing: border-box;
+        }
+
+        #header {
+            font-family: sans-serif;
+            font-style: italic;
+            margin: 0 70px;
+        }
+
+        #time1 {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    
+    <form action="#" method="get" target="_blank" autocomplete="off">
+        <p id="header">O meu formulário</p>
+
+        <p>
+            <label for="nome">
+            Nome:
+            </label>
+            <input type="text" id="nome" name="nome" placeholder="Seu nome" />
+        </p>
+
+        <p>
+            <label for="dev">
+            Sou um dev?
+            </label>
+            <input type="checkbox" id="dev" name="dev" value="sim" />
+        </p>
+
+        <p>
+            <h3>Gênero</h3>
+            <label id="masc" for="masculino">
+            Masculino
+            </label>
+            <input type="radio" id="masculino" name="genero" />
+            <label id="femn" for="feminino">
+            Feminino
+            </label>
+            <input type="radio" id="feminino" name="genero" />    
+        </p>
+
+
+        <label for="datetime">Date:</label>
+        <input type="datetime-local" id="datetime" name="datetime">
+
+        <wrapper id="time1">
+        <label id="time" for="time">Date:</label>
+        <input type="time" id="time-object" name="time" value="20:00:01">
+        </wrapper>
+
+        <label for="file">Sua foto:</label>
+        <input type="file" id="file" name="file" accept="image/*" multiple>
+
+        <p>
+            <button type="reset">Reset</button>
+            <button type="submit">Enviar</button>
+        </p>
+    </form>
+
+</body>
+</html>
