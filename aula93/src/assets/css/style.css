@@ -60,11 +60,11 @@ form button:hover {
   background: var(--primary-color-darker);
 }
 
-.choose {
+.senha-gerada {
   font-family: "PT Sans";
   color: rgb(96, 160, 165);
   letter-spacing: 5px;
-  margin-left: 60px;
+  font-size: 1em;
 }
 
 .option {
@@ -83,9 +83,10 @@ form button:hover {
   height: 2.5em;
   width: 10em;
   font-family: "PT Sans";
+  margin-top: 30px;
 }
 
 .count {
   height: 2.5em;
-  width: 2.5em;
+  width: 3em;
 }

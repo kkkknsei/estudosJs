@@ -2,6 +2,86 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/modules/formGeraSenha.js":
+/*!**************************************!*\
+  !*** ./src/modules/formGeraSenha.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _geradores__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./geradores */ "./src/modules/geradores.js");
+
+var senhaGerada = document.querySelector(".senha-gerada");
+var quantidade = document.querySelector(".count");
+var numeros = document.querySelector(".numbers");
+var maiusculas = document.querySelector(".upper");
+var minusculas = document.querySelector(".lower");
+var simbolos = document.querySelector(".symbols");
+var submit = document.querySelector(".submit");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
+  submit.addEventListener("click", function () {
+    senhaGerada.innerHTML = gera();
+  });
+});
+
+function gera() {
+  var senha = (0,_geradores__WEBPACK_IMPORTED_MODULE_0__.default)(quantidade.value, maiusculas.checked, minusculas.checked, numeros.checked, simbolos.checked);
+  return senha || "Nada selecionado";
+}
+
+/***/ }),
+
+/***/ "./src/modules/geradores.js":
+/*!**********************************!*\
+  !*** ./src/modules/geradores.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ geraSenha)
+/* harmony export */ });
+var rand = function rand(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+};
+
+var geraMaiuscula = function geraMaiuscula() {
+  return String.fromCharCode(rand(65, 91));
+};
+
+var geraMinuscula = function geraMinuscula() {
+  return String.fromCharCode(rand(97, 123));
+};
+
+var geraNumero = function geraNumero() {
+  return String.fromCharCode(rand(48, 58));
+};
+
+var simbolos = ",.;~^[]{}!@#$%&_+-=";
+
+var geraSimbolo = function geraSimbolo() {
+  return simbolos[rand(0, simbolos.length)];
+};
+
+function geraSenha(qtd, maiusculas, minusculas, numeros, simbolos) {
+  var senhaArray = [];
+  qtd = Number(qtd);
+
+  for (var i = 0; i < qtd; i++) {
+    maiusculas && senhaArray.push(geraMaiuscula());
+    minusculas && senhaArray.push(geraMinuscula());
+    numeros && senhaArray.push(geraNumero());
+    simbolos && senhaArray.push(geraSimbolo());
+  }
+
+  return senhaArray.join("").slice(0, qtd);
+}
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./src/assets/css/style.css":
 /*!************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./src/assets/css/style.css ***!
@@ -22,7 +102,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ":root {\n  --primary-color: rgb(26, 130, 154);\n  --primary-color-darker: rgb(9, 48, 56);\n}\n\n* {\n  box-sizing: border-box;\n  outline: 0;\n}\n\nbody {\n  margin: 0;\n  padding: 0;\n  background: var(--primary-color);\n  font-family: \"Open sans\", sans-serif;\n  font-size: 1.3em;\n  line-height: 1.5em;\n}\n\n.container {\n  max-width: 640px;\n  margin: 0 auto;\n  margin-top: 70px;\n  background: #fff;\n  padding: 20px;\n  border-radius: 10px;\n}\n\nform input,\nform label,\nform button {\n  display: block;\n  width: 100%;\n  margin-bottom: 10px;\n}\n\nform input {\n  font-size: 24px;\n  height: 50px;\n  padding: 0 20px;\n}\n\nform input:focus {\n  outline: 1px solid var(--primary-color);\n}\n\nform button {\n  border: none;\n  background: var(--primary-color);\n  color: #fff;\n  font-size: 18px;\n  font-weight: 700;\n  height: 50px;\n  cursor: pointer;\n  margin-top: 30px;\n}\n\nform button:hover {\n  background: var(--primary-color-darker);\n}\n\n.choose {\n  font-family: \"PT Sans\";\n  color: rgb(96, 160, 165);\n  letter-spacing: 5px;\n  margin-left: 60px;\n}\n\n.option {\n  display: flex;\n  flex-direction: row;\n  align-items: baseline;\n  height: 50px;\n}\n\n.option p {\n  margin-right: 10px;\n}\n\n.submit {\n  margin: auto;\n  height: 2.5em;\n  width: 10em;\n  font-family: \"PT Sans\";\n}\n\n.count {\n  height: 2.5em;\n  width: 2.5em;\n}\n", "",{"version":3,"sources":["webpack://./src/assets/css/style.css"],"names":[],"mappings":"AACA;EACE,kCAAkC;EAClC,sCAAsC;AACxC;;AAEA;EACE,sBAAsB;EACtB,UAAU;AACZ;;AAEA;EACE,SAAS;EACT,UAAU;EACV,gCAAgC;EAChC,oCAAoC;EACpC,gBAAgB;EAChB,kBAAkB;AACpB;;AAEA;EACE,gBAAgB;EAChB,cAAc;EACd,gBAAgB;EAChB,gBAAgB;EAChB,aAAa;EACb,mBAAmB;AACrB;;AAEA;;;EAGE,cAAc;EACd,WAAW;EACX,mBAAmB;AACrB;;AAEA;EACE,eAAe;EACf,YAAY;EACZ,eAAe;AACjB;;AAEA;EACE,uCAAuC;AACzC;;AAEA;EACE,YAAY;EACZ,gCAAgC;EAChC,WAAW;EACX,eAAe;EACf,gBAAgB;EAChB,YAAY;EACZ,eAAe;EACf,gBAAgB;AAClB;;AAEA;EACE,uCAAuC;AACzC;;AAEA;EACE,sBAAsB;EACtB,wBAAwB;EACxB,mBAAmB;EACnB,iBAAiB;AACnB;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,qBAAqB;EACrB,YAAY;AACd;;AAEA;EACE,kBAAkB;AACpB;;AAEA;EACE,YAAY;EACZ,aAAa;EACb,WAAW;EACX,sBAAsB;AACxB;;AAEA;EACE,aAAa;EACb,YAAY;AACd","sourcesContent":["@import url(\"https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap\");\n:root {\n  --primary-color: rgb(26, 130, 154);\n  --primary-color-darker: rgb(9, 48, 56);\n}\n\n* {\n  box-sizing: border-box;\n  outline: 0;\n}\n\nbody {\n  margin: 0;\n  padding: 0;\n  background: var(--primary-color);\n  font-family: \"Open sans\", sans-serif;\n  font-size: 1.3em;\n  line-height: 1.5em;\n}\n\n.container {\n  max-width: 640px;\n  margin: 0 auto;\n  margin-top: 70px;\n  background: #fff;\n  padding: 20px;\n  border-radius: 10px;\n}\n\nform input,\nform label,\nform button {\n  display: block;\n  width: 100%;\n  margin-bottom: 10px;\n}\n\nform input {\n  font-size: 24px;\n  height: 50px;\n  padding: 0 20px;\n}\n\nform input:focus {\n  outline: 1px solid var(--primary-color);\n}\n\nform button {\n  border: none;\n  background: var(--primary-color);\n  color: #fff;\n  font-size: 18px;\n  font-weight: 700;\n  height: 50px;\n  cursor: pointer;\n  margin-top: 30px;\n}\n\nform button:hover {\n  background: var(--primary-color-darker);\n}\n\n.choose {\n  font-family: \"PT Sans\";\n  color: rgb(96, 160, 165);\n  letter-spacing: 5px;\n  margin-left: 60px;\n}\n\n.option {\n  display: flex;\n  flex-direction: row;\n  align-items: baseline;\n  height: 50px;\n}\n\n.option p {\n  margin-right: 10px;\n}\n\n.submit {\n  margin: auto;\n  height: 2.5em;\n  width: 10em;\n  font-family: \"PT Sans\";\n}\n\n.count {\n  height: 2.5em;\n  width: 2.5em;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ":root {\n  --primary-color: rgb(26, 130, 154);\n  --primary-color-darker: rgb(9, 48, 56);\n}\n\n* {\n  box-sizing: border-box;\n  outline: 0;\n}\n\nbody {\n  margin: 0;\n  padding: 0;\n  background: var(--primary-color);\n  font-family: \"Open sans\", sans-serif;\n  font-size: 1.3em;\n  line-height: 1.5em;\n}\n\n.container {\n  max-width: 640px;\n  margin: 0 auto;\n  margin-top: 70px;\n  background: #fff;\n  padding: 20px;\n  border-radius: 10px;\n}\n\nform input,\nform label,\nform button {\n  display: block;\n  width: 100%;\n  margin-bottom: 10px;\n}\n\nform input {\n  font-size: 24px;\n  height: 50px;\n  padding: 0 20px;\n}\n\nform input:focus {\n  outline: 1px solid var(--primary-color);\n}\n\nform button {\n  border: none;\n  background: var(--primary-color);\n  color: #fff;\n  font-size: 18px;\n  font-weight: 700;\n  height: 50px;\n  cursor: pointer;\n  margin-top: 30px;\n}\n\nform button:hover {\n  background: var(--primary-color-darker);\n}\n\n.senha-gerada {\n  font-family: \"PT Sans\";\n  color: rgb(96, 160, 165);\n  letter-spacing: 5px;\n  font-size: 1em;\n}\n\n.option {\n  display: flex;\n  flex-direction: row;\n  align-items: baseline;\n  height: 50px;\n}\n\n.option p {\n  margin-right: 10px;\n}\n\n.submit {\n  margin: auto;\n  height: 2.5em;\n  width: 10em;\n  font-family: \"PT Sans\";\n  margin-top: 30px;\n}\n\n.count {\n  height: 2.5em;\n  width: 3em;\n}\n", "",{"version":3,"sources":["webpack://./src/assets/css/style.css"],"names":[],"mappings":"AACA;EACE,kCAAkC;EAClC,sCAAsC;AACxC;;AAEA;EACE,sBAAsB;EACtB,UAAU;AACZ;;AAEA;EACE,SAAS;EACT,UAAU;EACV,gCAAgC;EAChC,oCAAoC;EACpC,gBAAgB;EAChB,kBAAkB;AACpB;;AAEA;EACE,gBAAgB;EAChB,cAAc;EACd,gBAAgB;EAChB,gBAAgB;EAChB,aAAa;EACb,mBAAmB;AACrB;;AAEA;;;EAGE,cAAc;EACd,WAAW;EACX,mBAAmB;AACrB;;AAEA;EACE,eAAe;EACf,YAAY;EACZ,eAAe;AACjB;;AAEA;EACE,uCAAuC;AACzC;;AAEA;EACE,YAAY;EACZ,gCAAgC;EAChC,WAAW;EACX,eAAe;EACf,gBAAgB;EAChB,YAAY;EACZ,eAAe;EACf,gBAAgB;AAClB;;AAEA;EACE,uCAAuC;AACzC;;AAEA;EACE,sBAAsB;EACtB,wBAAwB;EACxB,mBAAmB;EACnB,cAAc;AAChB;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,qBAAqB;EACrB,YAAY;AACd;;AAEA;EACE,kBAAkB;AACpB;;AAEA;EACE,YAAY;EACZ,aAAa;EACb,WAAW;EACX,sBAAsB;EACtB,gBAAgB;AAClB;;AAEA;EACE,aAAa;EACb,UAAU;AACZ","sourcesContent":["@import url(\"https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap\");\n:root {\n  --primary-color: rgb(26, 130, 154);\n  --primary-color-darker: rgb(9, 48, 56);\n}\n\n* {\n  box-sizing: border-box;\n  outline: 0;\n}\n\nbody {\n  margin: 0;\n  padding: 0;\n  background: var(--primary-color);\n  font-family: \"Open sans\", sans-serif;\n  font-size: 1.3em;\n  line-height: 1.5em;\n}\n\n.container {\n  max-width: 640px;\n  margin: 0 auto;\n  margin-top: 70px;\n  background: #fff;\n  padding: 20px;\n  border-radius: 10px;\n}\n\nform input,\nform label,\nform button {\n  display: block;\n  width: 100%;\n  margin-bottom: 10px;\n}\n\nform input {\n  font-size: 24px;\n  height: 50px;\n  padding: 0 20px;\n}\n\nform input:focus {\n  outline: 1px solid var(--primary-color);\n}\n\nform button {\n  border: none;\n  background: var(--primary-color);\n  color: #fff;\n  font-size: 18px;\n  font-weight: 700;\n  height: 50px;\n  cursor: pointer;\n  margin-top: 30px;\n}\n\nform button:hover {\n  background: var(--primary-color-darker);\n}\n\n.senha-gerada {\n  font-family: \"PT Sans\";\n  color: rgb(96, 160, 165);\n  letter-spacing: 5px;\n  font-size: 1em;\n}\n\n.option {\n  display: flex;\n  flex-direction: row;\n  align-items: baseline;\n  height: 50px;\n}\n\n.option p {\n  margin-right: 10px;\n}\n\n.submit {\n  margin: auto;\n  height: 2.5em;\n  width: 10em;\n  font-family: \"PT Sans\";\n  margin-top: 30px;\n}\n\n.count {\n  height: 2.5em;\n  width: 3em;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -555,8 +635,11 @@ var __webpack_exports__ = {};
   !*** ./src/main.js ***!
   \*********************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _assets_css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/css/style.css */ "./src/assets/css/style.css");
+/* harmony import */ var _modules_formGeraSenha__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/formGeraSenha */ "./src/modules/formGeraSenha.js");
+/* harmony import */ var _assets_css_style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/css/style.css */ "./src/assets/css/style.css");
 
+
+(0,_modules_formGeraSenha__WEBPACK_IMPORTED_MODULE_0__.default)();
 })();
 
 /******/ })()

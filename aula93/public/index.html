@@ -13,31 +13,31 @@
 
   <body>
     <section class="container">
-      <h1>Geador de senhas</h1>
-      <h1 class="choose">Escolha as opções</h1>
+      <h1>Gerador de senhas</h1>
+      <h1 class="senha-gerada">Selecione as opções</h1>
 
       <div class="option">
         <p>Quantidade de caracteres</p>
-        <input type="text" class="count" />
+        <input type="number" value="20" class="count" min="1" max="25" />
       </div>
       <div class="option">
         <p>
           Adicionar números
-          <input type="checkbox" />
+          <input class="numbers" type="checkbox" checked />
         </p>
       </div>
 
       <div class="option">
-        <p>Letras maiúsculas</p>
-        <input type="checkbox" />
+        <p>Adicionar letras maiúsculas</p>
+        <input class="upper" type="checkbox" />
       </div>
       <div class="option">
-        <p>Letras minúsculas</p>
-        <input type="checkbox" />
+        <p>Adicionar letras minúsculas</p>
+        <input class="lower" type="checkbox" checked />
       </div>
       <div class="option">
-        <p>Letras simbólos</p>
-        <input type="checkbox" />
+        <p>Adicionar símbolos</p>
+        <input class="symbols" type="checkbox" />
       </div>
 
       <div class="option">
