@@ -1,7 +1,8 @@
 exports.paginaInicial = (req, res) => {
   res.render("index");
+  return;
 };
 
 exports.trataPost = (req, res) => {
-  res.send("Oi, sou sua nova rota de POST");
+  res.send(req.body);
 };
