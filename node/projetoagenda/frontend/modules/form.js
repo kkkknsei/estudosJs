@@ -1,6 +1,6 @@
 import validator from "validator";
 
-export default class Login {
+export default class Form {
   constructor(formClass) {
     this.form = document.querySelector(formClass);
   }
@@ -19,17 +19,26 @@ export default class Login {
 
   validate(e) {
     const el = e.target;
+    const nomeInput = el.querySelector('input[name="nome"]');
     const emailInput = el.querySelector('input[name="email"]');
-    const passwordInput = el.querySelector('input[name="senha"]');
+    const telefoneInput = el.querySelector('input[name="telefone"]');
     let error = false;
 
-    if (!validator.isEmail(emailInput.value)) {
-      alert("E-mail inválido");
+    if (validator.isEmpty(nomeInput.value)) {
+      alert("Preencha um nome");
       error = true;
     }
 
-    if (passwordInput.value.length < 3 || passwordInput.value.length > 50) {
-      alert("Senha precisa ter entre 3 e 50 caracteres");
+    if (!validator.isEmail(emailInput.value)) {
+      alert("Preencha um e-mail válido");
+      error = true;
+    }
+
+    if (
+      validator.isEmpty(emailInput.value) &&
+      validator.isEmpty(telefoneInput.value)
+    ) {
+      alert("Você precisa preencher um e-mail ou um telefone");
       error = true;
     }
 
